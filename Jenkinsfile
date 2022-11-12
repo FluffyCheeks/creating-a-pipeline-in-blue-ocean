@@ -10,7 +10,7 @@ pipeline {
     stage('Build') {
       steps {
         sh 'npm install'
-        dependencyCheck(additionalArguments: '--format HTML --format XML')
+        dependencyCheck(additionalArguments: '--scan /home/GitHub/simple-node-js-react-npm-app --format HTML --format XML')
       }
     }
 
