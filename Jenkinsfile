@@ -10,7 +10,7 @@ pipeline {
     stage('Build') {
       steps {
         sh 'npm install'
-        dependencyCheck(odcInstallation: 'Dependency-Check', additionalArguments: '--format XML --format HTML')
+        dependencyCheck(additionalArguments: '--format XML --format HTML', odcInstallation: 'Dependency-Check')
       }
     }
 
