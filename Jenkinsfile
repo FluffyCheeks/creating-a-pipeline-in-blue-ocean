@@ -15,23 +15,12 @@ pipeline {
     }
 
     stage('Test') {
-      parallel {
-        stage('Test') {
-          environment {
-            CI = 'true'
-          }
-          steps {
-            sh './jenkins/scripts/test.sh'
-            dependencyCheckPublisher()
-          }
-        }
-
-        stage('Post Build') {
-          steps {
-            dependencyCheckPublisher(failedNewCritical: 1)
-          }
-        }
-
+      environment {
+        CI = 'true'
+      }
+      steps {
+        sh './jenkins/scripts/test.sh'
+        dependencyCheckPublisher()
       }
     }
 
